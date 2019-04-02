@@ -1,18 +1,19 @@
 package io.github.matheusfm;
 
-import io.github.matheusfm.interfaces.CacheRepository;
-import io.github.matheusfm.interfaces.PersistentRepository;
+import io.github.matheusfm.interfaces.ProductCacheRepository;
+import io.github.matheusfm.interfaces.ProductPersistentRepository;
 import java.util.List;
 import java.util.Optional;
 import lombok.NonNull;
 
 public class ProductService {
 
-  private final CacheRepository cacheRepository;
-  private final PersistentRepository persistentRepository;
+  private final ProductCacheRepository cacheRepository;
+  private final ProductPersistentRepository persistentRepository;
 
-  public ProductService(CacheRepository cacheRepository,
-      PersistentRepository persistentRepository) {
+  public ProductService(ProductCacheRepository cacheRepository,
+      ProductPersistentRepository persistentRepository) {
+
     this.cacheRepository = cacheRepository;
     this.persistentRepository = persistentRepository;
   }
@@ -35,7 +36,7 @@ public class ProductService {
   }
 
   public List<Product> findAll() {
-    return Optional.of(cacheRepository.findAll())
+    return Optional.ofNullable(cacheRepository.findAll())
         .filter(products -> !products.isEmpty())
         .orElseGet(persistentRepository::findAll);
   }
