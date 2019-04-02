@@ -21,7 +21,7 @@ public class ProductService {
   public void save(@NonNull Product product) {
     product.generateId();
     persistentRepository.save(product);
-//    cacheRepository.save(product);
+    cacheRepository.save(product);
   }
 
   public Product findProductById(@NonNull String id) {
