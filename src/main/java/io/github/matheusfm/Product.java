@@ -17,4 +17,16 @@ public class Product {
   public void generateId() {
     this.id = partnerId + "-" + UUID.randomUUID().toString();
   }
+
+  public boolean hasId() {
+    return id != null;
+  }
+
+  public String getIdOrGenerate() {
+    if (!hasId()) {
+      generateId();
+    }
+
+    return this.id;
+  }
 }
