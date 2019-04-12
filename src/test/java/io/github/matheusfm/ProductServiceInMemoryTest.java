@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
@@ -38,8 +40,6 @@ public class ProductServiceInMemoryTest {
 
     assertNotNull(product);
     assertEquals(id, product.getId());
-
-    productService.delete(product);
   }
 
   @Test
@@ -58,8 +58,8 @@ public class ProductServiceInMemoryTest {
   public void inMemoryRepositoryNonFindingTest() {
     final String id = UUID.randomUUID().toString();
 
-    when(cacheRepository.findById(id)).thenReturn(Optional.empty());
-    when(persistentRepository.findById(id)).thenReturn(Optional.of(new Product(id, "Notebook", 1)));
+    when(cacheRepository.findById(anyString())).thenReturn(Optional.empty());
+    when(persistentRepository.findById(eq(id))).thenReturn(Optional.of(new Product(id, "Notebook", 1)));
 
     productService.save(new Product(id, "Notebook", 1));
     final Product product = productService.findById(id);
