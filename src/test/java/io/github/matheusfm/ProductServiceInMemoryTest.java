@@ -38,6 +38,8 @@ public class ProductServiceInMemoryTest {
 
     assertNotNull(product);
     assertEquals(id, product.getId());
+
+    productService.delete(product);
   }
 
   @Test
