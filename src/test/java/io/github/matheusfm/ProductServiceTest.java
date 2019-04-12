@@ -24,6 +24,7 @@ import java.util.UUID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -38,6 +39,9 @@ public class ProductServiceTest {
   private ProductCacheRepository cacheRepository;
   @Mock
   private ProductPersistentRepository persistentRepository;
+
+  @Captor
+  private ArgumentCaptor<Product> argumentCaptor;
 
   @Test
   public void saveTest() {
@@ -54,8 +58,6 @@ public class ProductServiceTest {
     final Product product = new Product("Notebook", 1);
 
     productService.save(product);
-
-    ArgumentCaptor<Product> argumentCaptor = ArgumentCaptor.forClass(Product.class);
 
     verify(cacheRepository, times(1)).save(argumentCaptor.capture());
     assertNotNull(argumentCaptor.getValue());
