@@ -10,4 +10,6 @@ interface Repository<E, ID> {
   Optional<E> findById(ID id);
 
   List<E> findAll();
+
+  void delete(E entity);
 }

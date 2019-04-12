@@ -24,7 +24,7 @@ public class ProductService {
     cacheRepository.save(product);
   }
 
-  public Product findProductById(@NonNull String id) {
+  public Product findById(@NonNull String id) {
     Optional<Product> product;
     try {
       product = cacheRepository.findById(id);
@@ -39,6 +39,11 @@ public class ProductService {
     return Optional.ofNullable(cacheRepository.findAll())
         .filter(products -> !products.isEmpty())
         .orElseGet(persistentRepository::findAll);
+  }
+
+  public void delete(@NonNull Product product) {
+    persistentRepository.delete(product);
+    cacheRepository.delete(product);
   }
 
 }
