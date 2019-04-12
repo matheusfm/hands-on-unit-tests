@@ -15,7 +15,9 @@ public class Product {
   private final Integer partnerId;
 
   public void generateId() {
-    this.id = partnerId + "-" + UUID.randomUUID().toString();
+    if (!hasId()) {
+      this.id = partnerId + "-" + UUID.randomUUID().toString();
+    }
   }
 
   public boolean hasId() {
@@ -23,10 +25,7 @@ public class Product {
   }
 
   public String getIdOrGenerate() {
-    if (!hasId()) {
-      generateId();
-    }
-
+    generateId();
     return this.id;
   }
 }
