@@ -1,4 +1,5 @@
-# Unit Tests Hands-On  [![Build Status](https://travis-ci.org/matheusfm/hands-on-unit-tests.svg?branch=master)](https://travis-ci.org/matheusfm/hands-on-unit-tests)
+# Unit Tests Hands-On  [![Build Status](https://travis-ci.org/matheusfm/hands-on-unit-tests.svg?branch=master)](https://travis-ci.org/matheusfm/hands-on-unit-tests) [![codecov](https://codecov.io/gh/matheusfm/hands-on-unit-tests/branch/master/graph/badge.svg)](https://codecov.io/gh/matheusfm/hands-on-unit-tests)
+
 
 #### Test Pyramid
 ![Test Pyramid](https://martinfowler.com/bliki/images/testPyramid/test-pyramid.png)
